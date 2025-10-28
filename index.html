@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Website</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    .page {
+      display: none;
+    }
+    .page.active {
+      display: block;
+    }
+    .nav-link.active {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    .skill-bar {
+      height: 8px;
+      background: #e5e7eb;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .skill-progress {
+      height: 100%;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      border-radius: 4px;
+      transition: width 1s ease;
+    }
+    .timeline-item {
+      position: relative;
+      padding-left: 2rem;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      width: 12px;
+      height: 12px;
+      background: #667eea;
+      border-radius: 50%;
+    }
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 1.5rem;
+      width: 2px;
+      height: calc(100% - 1rem);
+      background: #e5e7eb;
+    }
+    .timeline-item:last-child::after {
+      display: none;
+    }
+  </style>
+</head>
+<body class="min-h-full bg-gray-50">
+
+  <!-- Navigation -->
+  <nav class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex justify-between items-center py-4">
+        <div class="text-2xl font-bold gradient-bg bg-clip-text text-transparent">
+          <span id="nav-name">Nguyễn Trần Hoàng Phúc</span>
+        </div>
+        <div class="flex space-x-1">
+          <button class="nav-link px-4 py-2 rounded-lg font-medium transition-all duration-300 active" onclick="showPage('home', event)">Trang chủ</button>
+          <button class="nav-link px-4 py-2 rounded-lg font-medium transition-all duration-300" onclick="showPage('about', event)">Giới thiệu</button>
+          <button class="nav-link px-4 py-2 rounded-lg font-medium transition-all duration-300" onclick="showPage('designs', event)">Dự Án</button>
+          <button class="nav-link px-4 py-2 rounded-lg font-medium transition-all duration-300" onclick="showPage('skills', event)">Kỹ năng</button>
+          <button class="nav-link px-4 py-2 rounded-lg font-medium transition-all duration-300" onclick="showPage('experience', event)">Kinh nghiệm</button>
+		  <button class="nav-link px-4 py-2 rounded-lg font-medium transition-all duration-300" onclick="showPage('pricing', event)">Gói Pro</button>
+          <button class="nav-link px-4 py-2 rounded-lg font-medium transition-all duration-300" onclick="showPage('contact', event)">Liên hệ</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Home Page -->
+  <div id="home" class="page active">
+    <div class="gradient-bg min-h-screen flex items-center">
+      <div class="max-w-6xl mx-auto px-4 text-center text-white">
+        <div class="mb-8">
+          <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-white/20 flex items-center justify-center text-6xl">
+            👨‍💻
+          </div>
+          <h1 class="text-5xl font-bold mb-4">Xin chào, tôi là <span id="home-name">Nguyễn Trần Hoàng Phúc</span></h1>
+          <p class="text-2xl mb-6 opacity-90" id="home-title">Sinh viên, designer nghiệp dư</p>
+          <p class="text-lg mb-8 opacity-80 max-w-2xl mx-auto" id="home-about">
+            Mình là người năng động, tỉ mỉ, sáng tạo, có trách nhiệm và luôn muốn mang lại năng lượng tích cực, truyền cảm hứng cho mọi người qua từng sản phẩm.
+          </p>
+          <div class="flex justify-center space-x-4">
+            <button onclick="showPage('about', event)" class="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">Xem Giới Thiệu</button>
+            <button onclick="showPage('contact', event)" class="border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition-colors">Liên hệ</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Page -->
+  <div id="about" class="page">
+    <div class="max-w-6xl mx-auto px-4 py-16">
+      <h2 class="text-4xl font-bold text-center mb-12 gradient-bg bg-clip-text text-transparent">Giới thiệu về tôi</h2>
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+<div>
+          <div class="w-64 h-64 mx-auto rounded-full overflow-hidden shadow-lg">
+            <iframe src="https://drive.google.com/file/d/12aJlM3syF89TL75ywEvxVM3J6s3ufhWg/preview" class="w-full h-full border-0"></iframe>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold mb-4"> </h3>
+          <p class="text-gray-600 mb-6" id="about-description">
+            Xin chào! Mình có nickname ZICA, một người yêu thích sáng tạo và kể chuyện bằng hình ảnh lẫn âm thanh. Mình bắt đầu hành trình với thiết kế từ năm lớp 10 (2022), khi lần đầu chạm vào Canva và nhận ra niềm vui trong việc biến ý tưởng thành sản phẩm trực quan.
+            Đến năm 2024, mình sáng lập và giữ vai trò Leader của Đội Phát thanh & Truyền thông Trường THPT Cái Bè, trực thuộc Đoàn trường. Trải nghiệm đó giúp mình học cách quản lý đội nhóm, lên ý tưởng, phối hợp và cùng mọi người tạo nên những dự án đầy ý nghĩa. Tháng 9 năm 2025, mình trở thành Phó bí thư Chi Đoàn 25DQCA1, trường Hutech và sau đó trở thành CTV Đoàn Khoa Khoa KHXH & QHCC.
+          </p>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="text-center p-4 bg-white rounded-lg shadow">
+              <div class="text-3xl font-bold text-purple-600">50+</div>
+              <div class="text-gray-600">Dự án hoàn thành</div>
+            </div>
+            <div class="text-center p-4 bg-white rounded-lg shadow">
+              <div class="text-3xl font-bold text-purple-600">3+</div>
+              <div class="text-gray-600">Năm kinh nghiệm</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<!-- Designs Page -->
+<div id="designs" class="page">
+  <div class="max-w-6xl mx-auto px-4 py-16">
+    <h2 class="text-4xl font-bold text-center mb-12 gradient-bg bg-clip-text text-transparent">Thiết kế của tôi</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Design Item 1 -->
+      <div class="card-hover bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="h-48 bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center text-white text-6xl cursor-pointer" onclick="openDesign('https://example.com/design1')">🎨</div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Poster</h3>
+          <p class="text-gray-600 mb-4"></p>
+          <button onclick="openDesign('https://www.canva.com/design/DAG1qHUO7ys/AftUriqSTu6vMq7eI-QrAw/view?utm_content=DAG1qHUO7ys&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0bf4113974')" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors">Xem thiết kế</button>
+        </div>
+      </div>
+      <!-- Design Item 2 -->
+      <div class="card-hover bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="h-48 bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center text-white text-6xl cursor-pointer" onclick="openDesign('https://example.com/design2')">📱</div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Standee</h3>
+          <p class="text-gray-600 mb-4"></p>
+          <button onclick="openDesign('https://www.canva.com/design/DAG1zG5eIGU/h_mViOFOAvl-oLqOt-9o1Q/view?utm_content=DAG1zG5eIGU&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h907dc1e0ba')" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors">Xem thiết kế</button>
+        </div>
+      </div>
+      <!-- Design Item 3 -->
+      <div class="card-hover bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="h-48 bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center text-white text-6xl cursor-pointer" onclick="openDesign('https://example.com/design3')">🌐</div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Logo</h3>
+          <p class="text-gray-600 mb-4"></p>
+          <button onclick="openDesign('https://www.canva.com/design/DAGriiS0Dro/vn0FaLhQTytC6X5mcE3yMA/view?utm_content=DAGriiS0Dro&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors">Xem thiết kế</button>
+        </div>
+      </div>
+      <!-- Design Item 4 -->
+      <div class="card-hover bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="h-48 bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white text-6xl cursor-pointer" onclick="openDesign('https://example.com/design4')">🎯</div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Sách </h3>
+          <p class="text-gray-600 mb-4"></p>
+          <button onclick="openDesign('https://www.canva.com/folder/FAFfXZ0-8TE')" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors">Xem thiết kế</button>
+        </div>
+      </div>
+      <!-- Design Item 5 -->
+      <div class="card-hover bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="h-48 bg-gradient-to-br from-purple-400 to-indigo-500 flex items-center justify-center text-white text-6xl cursor-pointer" onclick="openDesign('https://example.com/design5')">📄</div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">PPT</h3>
+          <p class="text-gray-600 mb-4"></p>
+          <button onclick="openDesign('https://www.canva.com/design/DAG07VngsWk/TuKCkD2fQ2ctZjxfplcFsA/view?utm_content=DAG07VngsWk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h4d2b0dd79f')" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors">Xem thiết kế</button>
+        </div>
+      </div>
+      <!-- Design Item 6 -->
+      <div class="card-hover bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="h-48 bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-white text-6xl cursor-pointer" onclick="openDesign('https://example.com/design6')">🖼️</div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Banner</h3>
+          <p class="text-gray-600 mb-4"></p>
+          <button onclick="openDesign('https://www.canva.com/design/DAG1vSurZJw/0gE0bNZxGD8nrCfIXVjhog/view?utm_content=DAG1vSurZJw&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h1abe5595dd')" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors">Xem thiết kế</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Skills Page -->
+<div id="skills" class="page">
+  <div class="max-w-6xl mx-auto px-4 py-16">
+    <h2 class="text-4xl font-bold text-center mb-12 gradient-bg bg-clip-text text-transparent">Kỹ năng</h2>
+    <div class="grid md:grid-cols-2 gap-12">
+    
+	 
+      <!-- Cột 1 -->
+      <div>
+        <h3 class="text-2xl font-bold mb-6">Thiết kế & Sáng tạo</h3>
+        <div class="space-y-4">
+          <div>
+            <div class="flex justify-between mb-2"><span class="font-medium">Canva</span> <span class="text-gray-600">95%</span></div>
+            <div class="skill-bar"><div class="skill-progress" style="width: 95%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2"><span class="font-medium">Capcut</span> <span class="text-gray-600">70%</span></div>
+            <div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2"><span class="font-medium">HTML</span> <span class="text-gray-600">85%</span></div>
+            <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2"><span class="font-medium">Tư duy sáng tạo</span> <span class="text-gray-600">80%</span></div>
+            <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cột 2 -->
+      <div>
+        <h3 class="text-2xl font-bold mb-6">Kỹ năng mềm</h3>
+        <div class="space-y-4">
+          <div>
+            <div class="flex justify-between mb-2"><span class="font-medium">Quản lý đội nhóm</span> <span class="text-gray-600">90%</span></div>
+            <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2"><span class="font-medium">Làm việc nhóm</span> <span class="text-gray-600">90%</span></div>
+            <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2"><span class="font-medium">Trách nhiệm & Kỷ luật</span> <span class="text-gray-600">95%</span></div>
+            <div class="skill-bar"><div class="skill-progress" style="width: 95%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2"><span class="font-medium">Viết lách</span> <span class="text-gray-600">80%</span></div>
+            <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- Experience Page -->
+  <div id="experience" class="page">
+   <div class="max-w-6xl mx-auto px-4 py-16">
+    <h2 class="text-4xl font-bold text-center mb-12 gradient-bg bg-clip-text text-transparent">Kinh nghiệm làm việc</h2>
+    <div class="max-w-3xl mx-auto">
+     <div class="timeline-item mb-8">
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+       <div class="flex justify-between items-start mb-4">
+        <div>
+         <h3 class="text-xl font-bold">Phó Bí Thư</h3>
+         <p class="text-purple-600 font-medium">Chi Đoàn 25DQCA1_HUTECH</p>
+        </div><span class="text-gray-500 text-sm">Tháng 9,2025 - Hiện tại</span>
+       </div>
+       <p class="text-gray-600">Quản lí, điều hành các hoạt động Đoàn-Hội tại chi Đoàn</p>
+      </div>
+     </div>
+	 </div>
+     <div class="timeline-item mb-8">
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+       <div class="flex justify-between items-start mb-4">
+        <div>
+         <h3 class="text-xl font-bold">Leader Đội Phát Thanh&Truyền Thông </h3>
+         <p class="text-purple-600 font-medium">THPT Cái Bè </p>
+        </div><span class="text-gray-500 text-sm"> Tháng 11,2024 - Hiện tại </span>
+       </div>
+       <p class="text-gray-600">Sáng lập và phát triển Đội, đồng thời kiêm nhiệm các vị trí thiết kế, content</p>
+      </div>
+     </div>
+     <div class="timeline-item mb-8">
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+       <div class="flex justify-between items-start mb-4">
+        <div>
+         <h3 class="text-xl font-bold">Bí Thư</h3>
+         <p class="text-purple-600 font-medium">A12_THPT Cái Bè </p>
+        </div><span class="text-gray-500 text-sm">2023 - Tháng 6,2025</span>
+       </div>
+       <p class="text-gray-600">Quản lí, điều hành các hoạt động Đoàn-Hội tại chi Đoàn</p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+<!-- Pricing Page -->
+  <div id="pricing" class="page">
+    <div class="max-w-6xl mx-auto px-4 py-16">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold mb-4 gradient-bg bg-clip-text text-transparent">Gói Tài Khoản Pro</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Chọn gói phù hợp với nhu cầu: từ dùng cá nhân, nhóm nhỏ đến sử dụng chuyên nghiệp cho trường lớp và dự án.</p>
+		<p></p>
+		<p></p>
+		<p></p>
+		<H3 class="text-3xl font-bold mb-3 gradient-bg bg-clip-text text-transparent"> Canva Pro </h3>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Edu -->
+        <div class="card-hover bg-white rounded-xl shadow-md p-6 flex flex-col">
+          <div class="text-center mb-4">
+            <div class="text-sm font-semibold text-gray-500 uppercase">Canva Edu</div>
+            <div class="text-4xl font-bold mt-2" data-price-month="49" data-price-year="490">250k<span class="text-lg">/năm</span></div>
+            <div class="text-sm text-gray-500">Phù hợp cá nhân, học sinh mới bắt đầu</div>
+          </div>
+          <ul class="mb-6 space-y-2 text-gray-600 flex-1">
+		              <li>✅ Bảo hành trọn gói</li>
+            <li>✅ Truy cập mẫu Canva cơ bản</li>
+            <li>✅ Chuyên dùng cho học tập</li>
+            <li>✅ 6000+ mẫu thiết kế và hình ảnh</li>
+          </ul>
+          <div>
+            <button class="w-full bg-purple-600 text-white py-2 rounded-lg font-semibold hover:bg-purple-700" onclick="purchase('Basic')">Mua gói</button>
+            <div class="text-xs text-gray-500 mt-3">Hoặc <a href="mailto:nguyentranhoangphuc.zica@gmail.com?subject=Yêu%20cầu%20mua%20Basic" class="text-purple-600">gửi yêu cầu bằng email</a></div>
+          </div>
+        </div>
+
+        <!-- Pro -->
+        <div class="card-hover bg-white rounded-xl shadow-lg p-6 border-2 border-purple-600 flex flex-col">
+          <div class="text-center mb-4">
+            <div class="text-sm font-semibold text-gray-500 uppercase">Canva Pro</div>
+            <div class="text-4xl font-bold mt-2" data-price-month="129" data-price-year="1290">200k<span class="text-lg">/3 tháng</span></div>
+            <div class="text-sm text-gray-500">Gói cao cấp</div>
+          </div>
+          <ul class="mb-6 space-y-2 text-gray-600 flex-1">
+		              <li>✅ Bảo hành trọn gói</li>
+            <li>✅ Toàn bộ mẫu Canva cao cấp</li>
+            <li>✅ Full tính năng cao cấp</li>
+            <li>✅ Không giới hạn file nhỏ</li>
+            <li>✅ Tài nguyên âm thanh & nhạc nền</li>
+          </ul>
+          <div>
+            <button class="w-full bg-purple-600 text-white py-2 rounded-lg font-semibold hover:bg-purple-700" onclick="purchase('Pro')">Mua gói</button>
+            <div class="text-xs text-gray-500 mt-3">Hoặc <a href="mailto:nguyentranhoangphuc.zica@gmail.com?subject=Yêu%20cầu%20mua%20Pro" class="text-purple-600">gửi yêu cầu bằng email</a></div>
+          </div>
+        </div>
+
+        <!-- Premium -->
+        <div class="card-hover bg-white rounded-xl shadow-md p-6 flex flex-col">
+          <div class="text-center mb-4">
+            <div class="text-sm font-semibold text-gray-500 uppercase">Canva Pro</div>
+            <div class="text-4xl font-bold mt-2" data-price-month="299" data-price-year="2990">650k<span class="text-lg">/năm</span></div>
+            <div class="text-sm text-gray-500">Cho nhóm & dự án lớn</div>
+          </div>
+          <ul class="mb-6 space-y-2 text-gray-600 flex-1">
+		              <li>✅ Bảo hành trọn gói</li>
+            <li>✅ Toàn bộ mẫu Canva cao cấp</li>
+            <li>✅ Full tính năng cao cấp</li>
+            <li>✅ Không giới hạn file nhỏ</li>
+            <li>✅ Tài nguyên âm thanh & nhạc nền</li>
+          </ul>
+          <div>
+            <button class="w-full bg-purple-600 text-white py-2 rounded-lg font-semibold hover:bg-purple-700" onclick="purchase('Premium')">Mua gói</button>
+            <div class="text-xs text-gray-500 mt-3">Hoặc <a href="mailto:nguyentranhoangphuc.zica@gmail.com?subject=Yêu%20cầu%20mua%20Premium" class="text-purple-600">gửi yêu cầu bằng email</a></div>
+          </div>
+        </div>
+      </div>
+<!--next-->
+<div class="max-w-6xl mx-auto px-4 py-16">
+      <div class="text-center mb-12">
+		<H3 class="text-3xl font-bold mb-3 gradient-bg bg-clip-text text-transparent"> Capcut Pro </h3>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- 1tb -->
+        <div class="card-hover bg-white rounded-xl shadow-md p-6 flex flex-col">
+          <div class="text-center mb-4">
+            <div class="text-sm font-semibold text-gray-500 uppercase">Capcut 1 thiết bị</div>
+            <div class="text-4xl font-bold mt-2" data-price-month="49" data-price-year="490">400k<span class="text-lg">/năm</span></div>
+            <div class="text-sm text-gray-500">Phù hợp cá nhân, dùng được <b>1 thiết bị </b></div>
+          </div>
+          <ul class="mb-6 space-y-2 text-gray-600 flex-1">
+            <li>✅ Bảo hành trọn gói</li>
+            <li>✅ Toàn bộ tính năng pro</li>
+            <li>✅ Mở khoá mẫu trả phí</li>
+			<li>✅ Không quảng cáo</li>
+          </ul>
+          <div>
+            <button class="w-full bg-purple-600 text-white py-2 rounded-lg font-semibold hover:bg-purple-700" onclick="purchase('Basic')">Mua gói</button>
+            <div class="text-xs text-gray-500 mt-3">Hoặc <a href="mailto:nguyentranhoangphuc.zica@gmail.com?subject=Yêu%20cầu%20mua%20Basic" class="text-purple-600">gửi yêu cầu bằng email</a></div>
+          </div>
+        </div>
+
+        <!-- 9c -->
+        <div class="card-hover bg-white rounded-xl shadow-lg p-6 border-2 border-purple-600 flex flex-col">
+          <div class="text-center mb-4">
+            <div class="text-sm font-semibold text-gray-500 uppercase">Capcut Chính Chủ</div>
+            <div class="text-4xl font-bold mt-2" data-price-month="129" data-price-year="1290">640k<span class="text-lg">/6 tháng</span></div>
+            <div class="text-sm text-gray-500">Gói cao cấp, dùng được <b>5 thiết bị</b> </div>
+          </div>
+          <ul class="mb-6 space-y-2 text-gray-600 flex-1">
+            <li>✅ Bảo hành trọn gói</li>
+            <li>✅ Toàn bộ tính năng pro</li>
+            <li>✅ Mở khoá mẫu trả phí</li>
+			<li>✅ Không quảng cáo</li>
+			<li>✅ 5 thiết bị</li>
+			<li>✅ 100gb đám mây </LI>
+
+
+          </ul>
+          <div>
+            <button class="w-full bg-purple-600 text-white py-2 rounded-lg font-semibold hover:bg-purple-700" onclick="purchase('Pro')">Mua gói</button>
+            <div class="text-xs text-gray-500 mt-3">Hoặc <a href="mailto:nguyentranhoangphuc.zica@gmail.com?subject=Yêu%20cầu%20mua%20Pro" class="text-purple-600">gửi yêu cầu bằng email</a></div>
+          </div>
+        </div>
+
+        <!-- Premium -->
+        <div class="card-hover bg-white rounded-xl shadow-md p-6 flex flex-col">
+          <div class="text-center mb-4">
+            <div class="text-sm font-semibold text-gray-500 uppercase">Canpcut 2 thiết bị </div>
+            <div class="text-4xl font-bold mt-2" data-price-month="299" data-price-year="2990">650k<span class="text-lg">/năm</span></div>
+            <div class="text-sm text-gray-500">Gói cao cấp, dùng được <b>2 thiết bị</b> </div>
+          </div>
+          <ul class="mb-6 space-y-2 text-gray-600 flex-1">
+            <li>✅ Bảo hành trọn gói</li>
+            <li>✅ Toàn bộ tính năng pro</li>
+            <li>✅ Mở khoá mẫu trả phí</li>
+			<li>✅ Không quảng cáo</li>
+			<li>✅ 2 thiết bị</li>
+          </ul>
+          <div>
+            <button class="w-full bg-purple-600 text-white py-2 rounded-lg font-semibold hover:bg-purple-700" onclick="purchase('Premium')">Mua gói</button>
+            <div class="text-xs text-gray-500 mt-3">Hoặc <a href="mailto:nguyentranhoangphuc.zica@gmail.com?subject=Yêu%20cầu%20mua%20Premium" class="text-purple-600">gửi yêu cầu bằng email</a></div>
+          </div>
+        </div>
+      </div>
+      
+  
+  <!--AI  -->
+<div class="max-w-6xl mx-auto px-4 py-16">
+      <div class="text-center mb-12">
+		<H3 class="text-3xl font-bold mb-3 gradient-bg bg-clip-text text-transparent"> Gói AI </h3>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- 1tb -->
+        <div class="card-hover bg-white rounded-xl shadow-md p-6 flex flex-col">
+          <div class="text-center mb-4">
+            <div class="text-sm font-semibold text-gray-500 uppercase">Chat GPT 3 thiết bị </div>
+            <div class="text-4xl font-bold mt-2" data-price-month="49" data-price-year="490">800k<span class="text-lg">/3 tháng </span></div>
+            <div class="text-sm text-gray-500">dùng 3 thiết bị</div>
+          </div>
+          <ul class="mb-6 space-y-2 text-gray-600 flex-1">
+            <li>✅ Bảo hành trọn gói</li>
+            <li>✅ Toàn bộ tính năng pro</li>
+			<li>✅ Không quảng cáo</li>
+          </ul>
+          <div>
+            <button class="w-full bg-purple-600 text-white py-2 rounded-lg font-semibold hover:bg-purple-700" onclick="purchase('Basic')">Mua gói</button>
+            <div class="text-xs text-gray-500 mt-3">Hoặc <a href="mailto:nguyentranhoangphuc.zica@gmail.com?subject=Yêu%20cầu%20mua%20Basic" class="text-purple-600">gửi yêu cầu bằng email</a></div>
+          </div>
+        </div>
+
+        <!-- 9c -->
+        <div class="card-hover bg-white rounded-xl shadow-lg p-6 border-2 border-purple-600 flex flex-col">
+          <div class="text-center mb-4">
+            <div class="text-sm font-semibold text-gray-500 uppercase">Gemini Advanced</div>
+            <div class="text-4xl font-bold mt-2" data-price-month="129" data-price-year="1290">450k<span class="text-lg">/6 tháng</span></div>
+            <div class="text-sm text-gray-500">Gói cao cấp, chính chủ </div>
+          </div>
+          <ul class="mb-6 space-y-2 text-gray-600 flex-1">
+            <li>✅ Bảo hành trọn gói</li>
+            <li>✅ Toàn bộ tính năng pro</li>
+			<li>✅ 100gb drive </LI>
+
+
+          </ul>
+          <div>
+            <button class="w-full bg-purple-600 text-white py-2 rounded-lg font-semibold hover:bg-purple-700" onclick="purchase('Pro')">Mua gói</button>
+            <div class="text-xs text-gray-500 mt-3">Hoặc <a href="mailto:nguyentranhoangphuc.zica@gmail.com?subject=Yêu%20cầu%20mua%20Pro" class="text-purple-600">gửi yêu cầu bằng email</a></div>
+          </div>
+        </div>
+
+        <!-- Premium -->
+        <div class="card-hover bg-white rounded-xl shadow-md p-6 flex flex-col">
+          <div class="text-center mb-4">
+            <div class="text-sm font-semibold text-gray-500 uppercase">Veo 3 ultra không giới hạn </div>
+            <div class="text-4xl font-bold mt-2" data-price-month="299" data-price-year="2990">400k<span class="text-lg">/tháng </span> </div>
+            <div class="text-sm text-gray-500">Gói cao cấp, không giới hạn credit </div>
+          </div>
+          <ul class="mb-6 space-y-2 text-gray-600 flex-1">
+            <li>✅ Bảo hành trọn gói</li>
+            <li>✅ Toàn bộ tính năng pro</li>
+            <li>✅ Mở khoá mẫu trả phí</li>
+			<li>✅ Không quảng cáo</li>
+			<li>✅ không giới hạn credit </li>
+          </ul>
+          <div>
+            <button class="w-full bg-purple-600 text-white py-2 rounded-lg font-semibold hover:bg-purple-700" onclick="purchase('Premium')">Mua gói</button>
+            <div class="text-xs text-gray-500 mt-3">Hoặc <a href="mailto:nguyentranhoangphuc.zica@gmail.com?subject=Yêu%20cầu%20mua%20Premium" class="text-purple-600">gửi yêu cầu bằng email</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-10 text-center text-gray-600">
+	  <p> <b> NGOÀI RA, TÔI CÒN CÓ CÁC TÀI KHOẢN PRO GIÁ RẺ KHÁC.XEM CHI TIẾT VUI LÒNG LIÊN HỆ QUA EMAIL/ZALO </b></p>
+	  <p>       
+	  
+	  </p>
+	  <p>       
+	      
+		  </p>
+        <p>Chúng tôi chấp nhận chuyển khoản ngân hàng hoặc thanh toán qua MOMO/PayPal. Sau khi thanh toán vui lòng gửi hóa đơn kèm <strong>tên tài khoản</strong> và <strong>email</strong> để kích hoạt.</p>
+      </div>
+    </div>
+  </div>
+<!-- Contact Page -->
+<div id="contact" class="page">
+  <div class="max-w-6xl mx-auto px-4 py-16">
+    <h2 class="text-4xl font-bold text-center mb-12 text-purple-700">Liên hệ với tôi</h2>
+    
+    <!-- Chia thành 2 cột: Thông tin liên hệ (trái) + Form gửi mail (phải) -->
+    <div class="grid md:grid-cols-2 gap-10 items-start">
+      
+      <!-- Thông tin liên hệ -->
+      <div>
+        <h3 class="text-2xl font-bold mb-6 text-gray-800">Thông tin liên hệ</h3>
+        <div class="space-y-6">
+          <div class="flex items-center space-x-4">
+            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 text-xl">
+              📧
+            </div>
+            <div>
+              <p class="font-medium">Email</p>
+              <p class="text-gray-600">Nguyentranhoangphuc.zica@gmail.com</p>
+            </div>
+          </div>
+
+          <div class="flex items-center space-x-4">
+            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 text-xl">
+              📱
+            </div>
+            <div>
+              <p class="font-medium">Điện thoại</p>
+              <p class="text-gray-600">+84 967195053</p>
+            </div>
+          </div>
+
+          <div class="flex items-center space-x-4">
+            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 text-xl">
+              💬
+            </div>
+            <div>
+              <p class="font-medium">Facebook</p>
+              <p class="text-gray-600">
+                <a href="https://www.facebook.com/Nguyentranhoangphuc.zica" target="_blank" class="text-purple-600 hover:underline">
+                  facebook.com/Nguyentranhoangphuc.zica
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form gửi mail -->
+      <div class="bg-white shadow-md rounded-xl p-6">
+        <h3 class="text-2xl font-bold text-center mb-6 text-purple-700">Gửi mail cho tôi</h3>
+        <form action="https://formsubmit.co/nguyentranhoangphuc.zica@gmail.com" method="POST" class="space-y-4">
+          <div>
+            <label class="block text-gray-700 mb-2 font-medium">Tên của bạn</label>
+            <input type="text" name="name" placeholder="Nhập tên của bạn" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500" required>
+          </div>
+          <div>
+            <label class="block text-gray-700 mb-2 font-medium">Email của bạn</label>
+            <input type="email" name="email" placeholder="Nhập email của bạn" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500" required>
+          </div>
+          <div>
+            <label class="block text-gray-700 mb-2 font-medium">Nội dung tin nhắn</label>
+            <textarea name="message" rows="4" placeholder="Viết nội dung..." class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500" required></textarea>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="bg-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-purple-700 transition-colors">Gửi</button>
+          </div>
+        </form>
+      </div>
+
+    </div> <!-- end grid -->
+  </div>
+</div>
+
+
+		<script>
+document.addEventListener("DOMContentLoaded", function() {
+  function showPage(pageId, event) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+    if (event && event.target) event.target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function openDesign(url) {
+    window.open(url, '_blank');
+  }
+
+  // Cho phép onclick trong HTML hoạt động
+  window.showPage = showPage;
+  window.openDesign = openDesign;
+});
+</script>
+</body>
+</html>
+
+
+</body>
+</html>
