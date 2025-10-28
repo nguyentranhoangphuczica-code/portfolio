@@ -620,6 +620,24 @@ document.addEventListener("DOMContentLoaded", function() {
   window.openDesign = openDesign;
 });
 </script>
+<script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.2.0-beta.6/libs/oversea/index.js"></script>
+<script>
+  new CozeWebSDK.WebChatClient({
+    config: {
+      bot_id: '7566115668061077520',
+    },
+    componentProps: {
+      title:"Zica Assistant",
+    },
+    auth: {
+      type: 'token',
+      token: 'pat_JmrMOnL9VorJ34hYlvwLulzjTDSyPUHtBJw71Qg08s3Tx656W3TKhuCbdRZoSWLi',
+      onRefreshToken: function () {
+        return 'pat_JmrMOnL9VorJ34hYlvwLulzjTDSyPUHtBJw71Qg08s3Tx656W3TKhuCbdRZoSWLi'
+      }
+    }
+  });
+</script>
 </body>
 </html>
 
